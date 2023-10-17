@@ -1,0 +1,12 @@
+FROM bellsoft/liberica-openjdk-alpine:16.0.1
+COPY ./java ./src
+RUN mkdir ./out
+RUN javac -sourcepath ./src -d out src/ru/boraldan/dz1/Main.java
+CMD java -classpath ./out ru.boraldan.dz1.Main
+
+---------------------------
+
+команды чтобы запустить докер и в нём прогамму java
+
+docker run -it --rm  4d0ab1c4c242 /bin/sh
+java -classpath ./out ru.boraldan.dz1.Main
