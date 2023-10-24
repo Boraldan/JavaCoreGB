@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/JavaCoreGB.iml" filepath="$PROJECT_DIR$/.idea/JavaCoreGB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Semi2_DZ2_XO/Semi2_DZ2_XO.iml" filepath="$PROJECT_DIR$/Semi2_DZ2_XO/Semi2_DZ2_XO.iml" />
     </modules>
   </component>
 </project>
