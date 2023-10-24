@@ -1,9 +1,9 @@
-package Start;
-
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class Start_XO {
+public class Temp2 {
+
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.println(" Введите имя игрока  ");
@@ -569,5 +569,5 @@ public class Start_XO {
         }
         return ijO;
     }
-
 }
+
