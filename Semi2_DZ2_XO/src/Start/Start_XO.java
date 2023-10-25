@@ -24,7 +24,6 @@ public class Start_XO {
 //        charArr[4][3] = 'X';
 //        charArr[4][2] = 'X';
 
-
         game(charArr, name);
     }
 
@@ -269,52 +268,6 @@ public class Start_XO {
         }
     }
 
-    public static void printField(char[][] charArr) {
-        for (int i = 0; i < charArr.length; i++) {
-            System.out.print("| ");
-            for (int j = 0; j < charArr[0].length; j++) {
-                if (charArr[i][j] == ' ') {
-                    System.out.printf("%s |", "_");
-                    System.out.printf("%s", " ");
-                } else {
-                    System.out.printf("%s |", charArr[i][j]);
-                    System.out.printf("%s", " ");
-                }
-            }
-            System.out.println();
-        }
-    }
-
-    public static int inNum(int size) {
-        int num;
-        Scanner scan = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
-            try {
-                num = Integer.parseInt(scan.nextLine());
-                if (num > 0 && num < size) return (num - 1);
-            } catch (Exception e) {
-            }
-            System.out.println("Введите корректное число");
-        }
-        scan.close();
-        return -1;
-    }
-
-    public static int inNum() {
-        int num;
-        Scanner scan = new Scanner(System.in);
-        for (int i = 0; i < 3; i++) {
-            try {
-                num = Integer.parseInt(scan.nextLine());
-                if (num > 5 & num <= 20) return num;
-            } catch (Exception e) {
-            }
-            System.out.println("Введите корректное число");
-        }
-        scan.close();
-        return -1;
-    }
-
     public static boolean checkWin(char[][] charArr) {
         int ROW = charArr.length;
         int COLL = charArr[0].length;
@@ -469,7 +422,6 @@ public class Start_XO {
         return false;
     }
 
-
     public static boolean stepIiUp(char[][] charArr, int i, int j) {
         for (int k = 0; k < 4; k++) {
             if (charArr[i - k][j + k] == 'O') {
@@ -486,7 +438,6 @@ public class Start_XO {
         }
         return false;
     }
-
 
     public static int[] checkLine(char[][] charArr, int i, int j) {
         int[] count = new int[4];
@@ -560,7 +511,7 @@ public class Start_XO {
 
     public static int[] oFindRow(char[][] charArr, int i, int j) {
         int[] ijO = new int[2];
-        // проверяем строку на 4 хода вперёд -->
+        // проверяем строку на 4 хода вперёд --> ищем индексы 'O'
         for (int k = j; k < j + 4; k++) {
             if ((k < charArr[0].length) && (charArr[i][k] == 'O')) {
                 ijO[0]=k;
@@ -568,6 +519,52 @@ public class Start_XO {
             }
         }
         return ijO;
+    }
+
+    public static void printField(char[][] charArr) {
+        for (int i = 0; i < charArr.length; i++) {
+            System.out.print("| ");
+            for (int j = 0; j < charArr[0].length; j++) {
+                if (charArr[i][j] == ' ') {
+                    System.out.printf("%s |", "_");
+                    System.out.printf("%s", " ");
+                } else {
+                    System.out.printf("%s |", charArr[i][j]);
+                    System.out.printf("%s", " ");
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static int inNum(int size) {
+        int num;
+        Scanner scan = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            try {
+                num = Integer.parseInt(scan.nextLine());
+                if (num > 0 && num < size) return (num - 1);
+            } catch (Exception e) {
+            }
+            System.out.println("Введите корректное число");
+        }
+        scan.close();
+        return -1;
+    }
+
+    public static int inNum() {
+        int num;
+        Scanner scan = new Scanner(System.in);
+        for (int i = 0; i < 3; i++) {
+            try {
+                num = Integer.parseInt(scan.nextLine());
+                if (num > 5 & num <= 20) return num;
+            } catch (Exception e) {
+            }
+            System.out.println("Введите корректное число");
+        }
+        scan.close();
+        return -1;
     }
 
 }
