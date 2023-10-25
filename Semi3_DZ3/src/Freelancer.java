@@ -6,8 +6,8 @@ public class Freelancer extends Headhunter {
     }
 
     @Override
-    public void salary() {
-        System.out.println(20.8 * 8 * salary);
+    public double salary() {
+        return 20.8 * 8 * salary;
     }
 
 

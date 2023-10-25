@@ -13,7 +13,7 @@ public abstract class Headhunter implements Comparable<Headhunter> {
         this.salary = salary;
     }
 
-    public abstract void salary();
+    public abstract double salary();
 
     public String getName() {
         return name;

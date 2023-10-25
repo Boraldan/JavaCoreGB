@@ -40,7 +40,7 @@ public class Main {
         System.out.println("Запуск собственного итератора  --->");
         ServiceHH serviceHH = new ServiceHH(hh);
         for (Headhunter el : serviceHH) {
-            System.out.println(el);
+            System.out.println(el.getName()  + "  " + el.salary());
         }
 
     }

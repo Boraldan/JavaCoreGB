@@ -4,8 +4,8 @@ public class Woker extends Headhunter {
     }
 
     @Override
-    public void salary() {
-        System.out.println(salary);
+    public double salary() {
+        return salary;
     }
 
 
