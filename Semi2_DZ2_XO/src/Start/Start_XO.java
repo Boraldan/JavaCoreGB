@@ -522,8 +522,15 @@ public class Start_XO {
     }
 
     public static void printField(char[][] charArr) {
+        System.out.printf("   %s", " ");
+        for (int i = 0; i < charArr[0].length; i++) {
+            System.out.printf("%d |", i+1);
+            System.out.printf("%s", " ");
+        }
+
+        System.out.println();
         for (int i = 0; i < charArr.length; i++) {
-            System.out.print("| ");
+            System.out.printf("%d | ", i+1);
             for (int j = 0; j < charArr[0].length; j++) {
                 if (charArr[i][j] == ' ') {
                     System.out.printf("%s |", "_");
@@ -566,5 +573,7 @@ public class Start_XO {
         scan.close();
         return -1;
     }
+
+
 
 }

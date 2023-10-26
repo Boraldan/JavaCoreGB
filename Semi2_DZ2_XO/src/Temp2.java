@@ -179,10 +179,10 @@ public class Temp2 {
                     if (countTop[0] == 2 & countTop[1] == 2) {
 
                         // пробуем обратобать xx(o), поставить рядом с ноликом свой нолик
-                        countTop = checkLine(charArr, i, j+1);
-                        if(countTop[0] == 2 & countTop[2] == 1) {
-                            int[]ijO = oFindRow(charArr,i,j+1);
-                            if(stepIiRow(charArr, ijO[0], ijO[1])) return;
+                        countTop = checkLine(charArr, i, j + 1);
+                        if (countTop[0] == 2 & countTop[2] == 1) {
+                            int[] ijO = oFindRow(charArr, i, j + 1);
+                            if (stepIiRow(charArr, ijO[0], ijO[1])) return;
                         }
 
                         if (stepIiRowBlock(charArr, i, j)) return;
@@ -270,8 +270,15 @@ public class Temp2 {
     }
 
     public static void printField(char[][] charArr) {
+        System.out.printf("   %s", " ");
+        for (int i = 0; i < charArr[0].length; i++) {
+            System.out.printf("%d |", i+1);
+            System.out.printf("%s", " ");
+        }
+
+        System.out.println();
         for (int i = 0; i < charArr.length; i++) {
-            System.out.print("| ");
+            System.out.printf("%d | ", i+1);
             for (int j = 0; j < charArr[0].length; j++) {
                 if (charArr[i][j] == ' ') {
                     System.out.printf("%s |", "_");
@@ -563,11 +570,12 @@ public class Temp2 {
         // проверяем строку на 4 хода вперёд -->
         for (int k = j; k < j + 4; k++) {
             if ((k < charArr[0].length) && (charArr[i][k] == 'O')) {
-                ijO[0]=k;
-                ijO[1]=j;
+                ijO[0] = k;
+                ijO[1] = j;
             }
         }
         return ijO;
     }
+
 }
 
