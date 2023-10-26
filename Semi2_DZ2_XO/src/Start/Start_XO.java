@@ -152,23 +152,41 @@ public class Start_XO {
                 if (charArr[i][j] == ' ' | charArr[i][j] == 'O') {
                     countTop = checkDown(charArr, i, j);
                     if (countTop[2] == 2 & countTop[1] == 2) {
-                        if (stepIiDown(charArr, i, j)) return;
+                        countTop = checkDown(charArr, i + 1, j + 1);
+                        if (countTop[2] == 2 & countTop[1] == 2) {
+                            if (stepIiDown(charArr, i + 2, j + 2)) return;
+                        } else if (stepIiDown(charArr, i, j)) return;
                     }
 
                     countTop = checkUp(charArr, i, j);
                     if (countTop[2] == 2 & countTop[1] == 2) {
-                        if (stepIiUp(charArr, i, j)) return;
+                        countTop = checkUp(charArr, i - 1, j + 1);
+                        if (countTop[2] == 2 & countTop[1] == 2) {
+                            if (stepIiUp(charArr, i - 2, j + 2)) return;
+                        } else if (stepIiUp(charArr, i, j)) return;
                     }
+
 
                     countTop = checkLine(charArr, i, j);
                     if (countTop[2] == 2 & countTop[1] == 2) {
-                        if (stepIiRow(charArr, i, j)) return;
+                        if (countTop[2] == 2 & countTop[1] == 2) {
+                            countTop = checkLine(charArr, i, j + 1);
+                            if (countTop[2] == 2 & countTop[1] == 2) {
+                                if (stepIiRow(charArr, i, j + 2)) return;
+                            } else if (stepIiRow(charArr, i, j)) return;
+                        }
                     }
 
                     countTop = checkColl(charArr, i, j);
                     if (countTop[2] == 2 & countTop[1] == 2) {
-                        if (stepIiCol(charArr, i, j)) return;
+                        if (countTop[2] == 2 & countTop[1] == 2) {
+                            countTop = checkColl(charArr, i + 1, j);
+                            if (countTop[2] == 2 & countTop[1] == 2) {
+                                if (stepIiCol(charArr, i + 2, j)) return;
+                            } else if (stepIiCol(charArr, i, j)) return;
+                        }
                     }
+
 
                 }
             }
@@ -243,6 +261,15 @@ public class Start_XO {
             for (int j = 0; j < COLL; j++) {
                 if (charArr[i][j] == 'X') {
 
+                    countTop = checkDown(charArr, i, j);
+                    if (countTop[0] == 1 & countTop[1] == 3) {
+                        if (stepIiDownBlock(charArr, i, j)) return;
+                    }
+
+                    countTop = checkUp(charArr, i, j);
+                    if (countTop[0] == 1 & countTop[1] == 3) {
+                        if (stepIiUpBlock(charArr, i, j)) return;
+                    }
                     countTop = checkLine(charArr, i, j);
                     if (countTop[0] == 1 & countTop[1] == 3) {
                         if (stepIiRowBlock(charArr, i, j)) return;
@@ -253,20 +280,11 @@ public class Start_XO {
                         if (stepIiColBlock(charArr, i, j)) return;
                     }
 
-                    countTop = checkDown(charArr, i, j);
-                    if (countTop[0] == 1 & countTop[1] == 3) {
-                        if (stepIiDownBlock(charArr, i, j)) return;
-                    }
 
-                    countTop = checkUp(charArr, i, j);
-                    if (countTop[0] == 1 & countTop[1] == 3) {
-                        if (stepIiUpBlock(charArr, i, j)) return;
-                    }
-
-                    if (((i - 1 > 0) & (j - 1 > 0)) && charArr[i - 1][j - 1] == ' ') {
-                        charArr[i - 1][j - 1] = 'O';
-                        return;
-                    }
+//                    if (((i - 1 > 0) & (j - 1 > 0)) && charArr[i - 1][j - 1] == ' ') {
+//                        charArr[i - 1][j - 1] = 'O';
+//                        return;
+//                    }
                 }
             }
         }
@@ -275,13 +293,13 @@ public class Start_XO {
     public static void printField(char[][] charArr) {
         System.out.printf("   %s", " ");
         for (int i = 0; i < charArr[0].length; i++) {
-            System.out.printf("%d |", i+1);
+            System.out.printf("%d |", i + 1);
             System.out.printf("%s", " ");
         }
 
         System.out.println();
         for (int i = 0; i < charArr.length; i++) {
-            System.out.printf("%d | ", i+1);
+            System.out.printf("%d | ", i + 1);
             for (int j = 0; j < charArr[0].length; j++) {
                 if (charArr[i][j] == ' ') {
                     System.out.printf("%s |", "_");
@@ -537,16 +555,15 @@ public class Start_XO {
         int[] count = new int[4];
         // проверяем столбцы на 4 хода вперёд -->
         for (int k = 0; k < 4; k++) {
-            if (((i+ k) < charArr.length & (j+k) < charArr[0].length) && (charArr[i+k][+j] == 'X')) {
+            if (((i + k) < charArr.length & (j + k) < charArr[0].length) && (charArr[i + k][j + k] == 'X')) {
                 count[0]++;
-            } else if (((i+ k) < charArr.length & (j+k) < charArr[0].length) && (charArr[i+k][+j] == ' ')) {
+            } else if (((i + k) < charArr.length & (j + k) < charArr[0].length) && (charArr[i + k][j + k] == ' ')) {
                 count[1]++;
-            } else if ((i+k) == charArr.length && (j+k) == charArr[0].length) {
+            } else if ((i + k) == charArr.length && (j + k) == charArr[0].length) {
                 count[3]++;
-            } else if (((i+ k) < charArr.length & (j+k) < charArr[0].length) && (charArr[i+k][+j] == 'O')) {
+            } else if (((i + k) < charArr.length & (j + k) < charArr[0].length) && (charArr[i + k][j + k] == 'O')) {
                 count[2]++;
             }
-            j++;
         }
         return count;
     }
@@ -554,17 +571,16 @@ public class Start_XO {
     public static int[] checkUp(char[][] charArr, int i, int j) {
         int[] count = new int[4];
         // проверяем столбцы на 4 хода вперёд -->
-        for (int k = i; k > i - 4; k--) {
-            if ((k >= 0 & j < charArr[0].length) && (charArr[k][j] == 'X')) {
+        for (int k = 0; k < 4; k++) {
+            if (((i - k) >= 0 & (j + k) < charArr[0].length) && (charArr[i - k][j + k] == 'X')) {
                 count[0]++;
-            } else if ((k >= 0 & j < charArr[0].length) && (charArr[k][j] == ' ')) {
+            } else if (((i - k) >= 0 & (j + k) < charArr[0].length) && (charArr[i - k][j + k] == ' ')) {
                 count[1]++;
-            } else if (k < 0 && j == charArr[0].length) {
+            } else if ((i - k) < 0 && (j + k) == charArr[0].length) {
                 count[3]++;
-            } else if ((k >= 0 & j < charArr[0].length) && (charArr[k][j] == 'O')) {
+            } else if (((i - k) >= 0 & (j + k) < charArr[0].length) && (charArr[i - k][j + k] == 'O')) {
                 count[2]++;
             }
-            j++;
         }
         return count;
     }
