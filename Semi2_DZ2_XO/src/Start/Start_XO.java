@@ -28,8 +28,8 @@ public class Start_XO {
 //        charArr[7][2] = 'O';
 
 //        charArr[1][5] = 'O';
-//        charArr[3][5] = 'O';
-//        charArr[4][5] = 'O';
+        charArr[3][4] = 'X';
+        charArr[3][5] = 'O';
 
 
         game(charArr, name);
@@ -150,6 +150,7 @@ public class Start_XO {
         for (int i = 0; i < ROW; i++) {
             for (int j = 0; j < COLL; j++) {
                 if (charArr[i][j] == ' ' | charArr[i][j] == 'O') {
+
                     countTop = checkDown(charArr, i, j);
                     if (countTop[2] == 2 & countTop[1] == 2) {
                         countTop = checkDown(charArr, i + 1, j + 1);
@@ -588,10 +589,10 @@ public class Start_XO {
     public static int[] oFindRow(char[][] charArr, int i, int j) {
         int[] ijO = new int[2];
         // проверяем строку на 4 хода вперёд -->
-        for (int k = j; k < j + 4; k++) {
-            if ((k < charArr[0].length) && (charArr[i][k] == 'O')) {
-                ijO[0] = k;
-                ijO[1] = j;
+        for (int k = 0; k < 04; k++) {
+            if (((j + k) < charArr[0].length) && (charArr[i][j + k] == 'O')) {
+                ijO[0] = i;
+                ijO[1] = j + k;
             }
         }
         return ijO;
