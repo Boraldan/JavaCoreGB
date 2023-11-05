@@ -1,5 +1,5 @@
 public class DebitAccount extends Account {
-    public DebitAccount(String name, int money) {
+    private DebitAccount(String name, int money) {
         super(name, money);
     }
 

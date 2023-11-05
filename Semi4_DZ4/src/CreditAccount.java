@@ -1,7 +1,6 @@
 public class CreditAccount extends Account {
 
-
-    public CreditAccount(String name, int money) {
+    private CreditAccount(String name, int money) {
         super(name, money);
     }
 

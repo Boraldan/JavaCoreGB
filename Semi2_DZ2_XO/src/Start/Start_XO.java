@@ -28,8 +28,8 @@ public class Start_XO {
 //        charArr[7][2] = 'O';
 
 //        charArr[1][5] = 'O';
-        charArr[3][4] = 'X';
-        charArr[3][5] = 'O';
+//        charArr[3][4] = 'X';
+//        charArr[3][5] = 'O';
 
 
         game(charArr, name);

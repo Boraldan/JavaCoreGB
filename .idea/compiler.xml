@@ -7,6 +7,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Semi1_DZ1" />
+        <module name="EMDZ4" />
       </profile>
     </annotationProcessing>
   </component>

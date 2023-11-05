@@ -5,7 +5,7 @@ public class Main {
         Account account = null;
 
         try {
-            account = Account.newAccount("Tom", 1000);
+            account = DebitAccount.newAccount("Tom", 1000);
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -22,6 +22,7 @@ public class Main {
             System.out.println(e.getMessage());
         }
         System.out.println();
+
         Account debitAccount = null;
         Account creditAccount = null;
 
